@@ -1,0 +1,53 @@
+version: '3.7'
+
+networks:
+  frontend:
+    driver: ${NETWORKS_DRIVER}
+
+services:
+
+  ### ML Front-End App ##############################################
+  application:
+    build:
+      context: .
+      dockerfile: ${DOCKER_FILE}
+    ports:
+      - "${REACT_APP_PORT}:3000"
+    volumes:
+      - /app/node_modules
+      - .:${APP_CODE_PATH_CONTAINER}
+    env_file:
+      - ./.env
+    networks:
+      - frontend
+    stdin_open: true
+
+  ### ML Front-End Test ##############################################
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:${APP_CODE_PATH_CONTAINER}
+    command: ["npm", "run", "test"]
+    env_file:
+      - ./.env
+    networks:
+      - frontend
+
+  ### ML Front-End Story Book ############################################
+  story-book:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "${REACT_APP_STORYBOOK_PORT}:9009"
+    volumes:
+      - /app/node_modules
+      - .:${APP_CODE_PATH_CONTAINER}
+    command: ["npm", "run", "storybook"]
+    env_file:
+      - ./.env
+    networks:
+      - frontend

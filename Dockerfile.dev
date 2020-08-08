@@ -1,0 +1,18 @@
+FROM node:lts-alpine
+
+LABEL version="1.0.0"
+LABEL description="ML Front-End Image"
+LABEL maintainer="Reysmer Valle <reysmerwvr@gmail.com>"
+
+ENV PROJECT_DIR /app
+
+RUN mkdir -p /app
+
+WORKDIR ${PROJECT_DIR}
+
+COPY package.json .
+RUN npm install --silent
+
+COPY . .
+
+CMD ["npm", "run", "start"]
