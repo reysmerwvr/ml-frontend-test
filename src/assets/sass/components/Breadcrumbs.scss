@@ -1,0 +1,36 @@
+@import "../variables.scss";
+@import "../functions.scss";
+
+.breadcrumb-container {
+  max-height: get_px_size(7);
+  height: get_px_size(7);
+  font-size: get_px_size(2) - 2px !important;
+
+  &__ol {
+    margin: 0;
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+    list-style: none;
+    align-items: center;
+    grid-column: 2 / 4;
+
+    &__li {
+      a {
+        text-decoration: none;
+        color: $gray-300;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &__delimiter {
+      display: flex;
+      margin-left: get_px_size(1);
+      user-select: none;
+      margin-right: get_px_size(1);
+    }
+  }
+}

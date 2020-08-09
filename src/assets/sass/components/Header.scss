@@ -1,0 +1,69 @@
+@import "../variables.scss";
+@import "../functions.scss";
+
+.header-container {
+  background-color: $yellow;
+  max-height: get_px_size(7);
+  height: get_px_size(7);
+
+  &__logo {
+    display: flex;
+    justify-content: flex-end;
+    align-self: center;
+    grid-column: 2 / 3;
+  }
+
+  &__search {
+    display: flex;
+    align-self: center;
+    justify-content: flex-start;
+    width: 100%;
+
+    & form {
+      position: relative;
+      width: 100%;
+    }
+
+    &__input {
+      border-radius: get_px_size(0.25);
+      border: 0 rgba(0, 0, 0, 0.2);
+      padding: get_px_size(1) get_px_size(0) get_px_size(1) get_px_size(1);
+      max-width: 95%;
+      width: 100%;
+      font-size: get_px_size(2) + 2px !important;
+    }
+
+    &__btn {
+      position: absolute;
+      border-radius: 0 2px 2px 0;
+      border: 0 rgba(0, 0, 0, 0.2);
+      background-color: $gray-100;
+      max-width: 5%;
+      width: 100%;
+      border-left: 1px solid $gray-100;
+
+      &__icon {
+        font-size: get_px_size(2);
+        line-height: get_px_size(3);
+      }
+    }
+
+    @media (max-width: $xs), (max-width: $sm) {
+      &__input {
+        max-width: 100%;
+      }
+      &__btn {
+        display: none;
+      }
+    }
+
+    @media (max-width: $sm), (max-width: $md) {
+      &__input {
+        max-width: 90%;
+      }
+      &__btn {
+        max-width: 10%;
+      }
+    }
+  }
+}

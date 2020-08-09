@@ -1,0 +1,4 @@
+@function get_px_size($base) {
+  $result: $base * $spacing;
+  @return $result;
+}
