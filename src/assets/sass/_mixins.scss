@@ -1,12 +1,14 @@
 // Mixins
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
 
 @mixin body-font {
-  font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Nunito', sans-serif;
 }
+
 @mixin heading-font {
-  font-family: "Saira Extra Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Nunito', sans-serif;
+}
+
+@mixin input-font {
+  font-family: 'Nunito', sans-serif;
 }

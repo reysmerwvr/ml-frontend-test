@@ -1,11 +1,23 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
+import { fetchProducts } from "../../actions"
 import "../../assets/sass/components/Header.scss"
 import logo from "../../assets/images/Logo_ML.png"
 import searchIcon from "../../assets/images/ic_Search.png"
+import { ProductsContext } from "../../contexts/ProductsContext"
 
-const Header = ({ placeholder }) => {
+const Header = () => {
+  const [, dispatch] = useContext(ProductsContext)
+  const [search, setSearch] = useState("")
+
+  const handleSearch = (event) => {
+    event.preventDefault()
+    if (search) {
+      const queryStringParams = { q: search }
+      fetchProducts(queryStringParams, dispatch)
+    }
+  }
+
   return (
     <header className="grid-container header-container">
       <div className="header-container__logo">
@@ -17,9 +29,12 @@ const Header = ({ placeholder }) => {
         <form role="search">
           <input
             type="text"
-            className="header-container__search__input"
             name="search"
-            placeholder={placeholder}
+            className="header-container__search__input"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            onBlur={handleSearch}
+            placeholder="Buscar productos, marcas y más…"
             maxLength="100"
             autoFocus=""
             autoCapitalize="off"
@@ -32,6 +47,7 @@ const Header = ({ placeholder }) => {
             type="submit"
             className="header-container__search__btn"
             tabIndex="3"
+            onClick={handleSearch}
           >
             <img
               src={searchIcon}
@@ -43,14 +59,6 @@ const Header = ({ placeholder }) => {
       </div>
     </header>
   )
-}
-
-Header.propTypes = {
-  placeholder: PropTypes.string,
-}
-
-Header.defaultProps = {
-  placeholder: "Buscar productos, marcas y más…",
 }
 
 export default Header

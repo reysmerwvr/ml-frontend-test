@@ -1,30 +1,28 @@
-import React from "react"
-import Breadcrumbs from "./common/Breadcrumbs"
+import React, { useEffect } from "react"
 import Card from "./common/Card"
 import "../assets/sass/components/ProductList.scss"
 
-const breadcrumbList = [
-  {
-    title: "Title 1",
-    url: "/",
-  },
-  {
-    title: "Title 2",
-    url: "/",
-  },
-]
+const renderProducts = (products) => {
+  return products.map((product) => {
+    const { id, title, thumbnail, price, address } = product
+    return (
+      <Card
+        key={id}
+        id={id}
+        title={title}
+        thumbnail={thumbnail}
+        description={title}
+        price={price}
+        address={address}
+        address={address}
+        product={product}
+      />
+    )
+  })
+}
 
-const ProductList = (props) => {
-  return (
-    <>
-      <Breadcrumbs breadcrumbList={breadcrumbList} />
-      <div className="grid-container products-container">
-        <div className="products-container__list">
-          <Card />
-        </div>
-      </div>
-    </>
-  )
+const ProductList = ({ products }) => {
+  return renderProducts(products)
 }
 
 export default ProductList
