@@ -1,9 +1,22 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import ReactDOM, { unmountComponentAtNode } from 'react-dom';
+
 import App from '../components/App';
 
-test('renders learn react link', () => {
-  // const { getByText } = render(<App />);
-  // const linkElement = getByText(/learn react/i);
-  // expect(linkElement).toBeInTheDocument();
+let container = null;
+beforeEach(() => {
+  // setup a DOM element as a render target
+  container = document.createElement('div');
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  // cleanup on exiting
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
+
+it('renders without crashing', () => {
+  ReactDOM.render(<App />, container);
 });

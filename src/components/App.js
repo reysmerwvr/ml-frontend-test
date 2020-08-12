@@ -1,10 +1,10 @@
-import React from "react"
-import { BrowserRouter, Switch, Route } from "react-router-dom"
-import Header from "./common/Header"
-import Footer from "./common/Footer"
-import Main from "./Main"
-import "../assets/sass/App.scss"
-import { ProductsContextProvider } from "../contexts/ProductsContext"
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Header from './common/Header';
+import Footer from './common/Footer';
+import Main from './Main';
+import '../assets/sass/App.scss';
+import { ProductsContextProvider } from '../contexts/ProductsContext';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Footer />
       </BrowserRouter>
     </ProductsContextProvider>
-  )
+  );
 }
 
-export default App
+export default App;

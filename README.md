@@ -14,11 +14,11 @@
 
 ## ⬇️ Version
 
-1.0.0
+2.0.0
 
 ## 🛠 Installation
 
-Download zip file and extract it [latest release](https://github.com/reysmerwvr/ml-frontend-test). Or clone the repository and cd into it.
+Download zip file and extract it [latest release](https://github.com/reysmerwvr/ml-frontend-test/releases/latest). Or clone the repository and cd into it.
 
 ML Front-End Test uses a number of open source projects to work properly:
 
@@ -57,9 +57,19 @@ docker-compose down -v # Bring down the development containers (and the associat
 
 ## 👁 Preview
 
+[Demo](https://reysmerwvr.github.io/ml-frontend-test/)
+
+![storybook-docs-preview](storybook-docs-preview.png)
+
 ### 📝 Todos
 
 - [ ] Add code comments
+- [ ] Add missing stories (Storybook)
+- [ ] Add integration tests
+- [ ] Improve breadcrumb implementation
+- [ ] Improve mobile performance
+- [ ] Add Loader Component
+- [ ] Add pagination and filters
 - [ ] Add Dockerfile for production
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does
