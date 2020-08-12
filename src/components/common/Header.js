@@ -1,20 +1,24 @@
 import React, { useState, useContext } from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { fetchProducts } from "../../actions"
 import "../../assets/sass/components/Header.scss"
 import logo from "../../assets/images/Logo_ML.png"
 import searchIcon from "../../assets/images/ic_Search.png"
 import { ProductsContext } from "../../contexts/ProductsContext"
+import { getQueryString } from "../../utils/helpers"
 
 const Header = () => {
   const [, dispatch] = useContext(ProductsContext)
   const [search, setSearch] = useState("")
+  const history = useHistory()
 
   const handleSearch = (event) => {
     event.preventDefault()
     if (search) {
-      const queryStringParams = { q: search }
-      fetchProducts(queryStringParams, dispatch)
+      let queryStringParams = { q: search }
+      fetchProducts({ queryStringParams, dispatch })
+      queryStringParams = getQueryString(queryStringParams)
+      history.push(`/items?${queryStringParams}`)
     }
   }
 

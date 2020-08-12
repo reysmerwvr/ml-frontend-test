@@ -3,35 +3,35 @@ import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
 import "../../assets/sass/components/Breadcrumbs.scss"
 
-const renderBreadcrumb = (breadcrumbList, delimiter) => {
-  const navigationListLength = breadcrumbList.length
-  return breadcrumbList.map((element, index) => {
-    const { title = "Title", url = "#" } = element
-    return (
-      <React.Fragment key={index}>
-        <li className="breadcrumb-container__ol__li">
-          <Link to={url}>{title}</Link>
-        </li>
-        <li className="breadcrumb-container__ol__delimiter">
-          {index < navigationListLength - 1 ? delimiter : null}
-        </li>
-      </React.Fragment>
-    )
-  })
-}
+const BreadCrumbs = ({ categories, delimiter }) => {
+  const renderBreadcrumb = (categories, delimiter) => {
+    const navigationListLength = categories.length
+    return categories.map((element, index) => {
+      const { id, name = "Name", url = "/" } = element
+      return (
+        <React.Fragment key={id}>
+          <li className="breadcrumb-container__ol__li">
+            <Link to={url}>{name}</Link>
+          </li>
+          <li className="breadcrumb-container__ol__delimiter">
+            {index < navigationListLength - 1 ? delimiter : null}
+          </li>
+        </React.Fragment>
+      )
+    })
+  }
 
-const BreadCrumbs = ({ breadcrumbList, delimiter }) => {
   return (
     <nav className="grid-container breadcrumb-container" aria-label="breadcrumb">
       <ol className="breadcrumb-container__ol">
-        {renderBreadcrumb(breadcrumbList, delimiter)}
+        {renderBreadcrumb(categories, delimiter)}
       </ol>
     </nav>
   )
 }
 
 BreadCrumbs.propTypes = {
-  breadcrumbList: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
   delimiter: PropTypes.string,
 }
 

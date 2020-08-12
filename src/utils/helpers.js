@@ -1,3 +1,5 @@
+import data from "../../package.json"
+
 export const defaultErrorMessage = "Oops! Something went wrong"
 
 export const handleError = (error) => {
@@ -39,4 +41,28 @@ export const getQueryString = (params) => {
       .join("&")
   }
   return paramsQueryString
+}
+
+export const financial = (value, decimals) =>
+  parseFloat(Number.parseFloat(value).toFixed(decimals))
+
+export const getPriceText = (currency, price) => {
+  const locale = process.env.REACT_APP_LOCALE || "en-US"
+  return `${currency} ${price.toLocaleString(locale)}`
+}
+
+export const getAuthorData = () => {
+  const [name, lastname] = data["author"].split(" ")
+  return [name, lastname]
+}
+
+export const getCategories = (filters) => {
+  return filters
+    .filter((x) => x.id === "category")
+    .reduce((acc, value) => {
+      return (acc = [...acc, ...value["values"]])
+    }, [])
+    .reduce((acc, value) => {
+      return (acc = [...acc, ...value["path_from_root"]])
+    }, [])
 }

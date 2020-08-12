@@ -1,6 +1,26 @@
 {
   "name": "ml-frontend-test",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "ML Front-End Test Application",
+  "keywords": [
+    "sass",
+    "html",
+    "responsive",
+    "react"
+  ],
+  "contributors": [
+    "Reysmer Valle"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reysmerwvr/ml-frontend-test.git"
+  },
+  "author": "Reysmer Valle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reysmerwvr/ml-frontend-test/issues"
+  },
+  "homepage": "https://reysmerwvr.github.io/ml-frontend-test",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",

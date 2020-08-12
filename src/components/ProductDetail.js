@@ -1,52 +1,58 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, { useContext, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import { fetchProduct } from "../actions"
+import { getPriceText } from "../utils/helpers"
 import "../assets/sass/components/ProductDetail.scss"
+import { ProductsContext } from "../contexts/ProductsContext"
 
-const ProductDetail = ({
-  name,
-  imageSrc,
-  price,
-  description,
-  currency,
-  type,
-  numOfSold,
-  buttonText,
-}) => {
+const ProductDetail = () => {
+  const [state, dispatch] = useContext(ProductsContext)
+  const { id } = useParams()
+  const { item, description } = state
+  const itemLength = Object.entries(item).length
+  const descriptionLength = Object.entries(description).length
+
+  useEffect(() => {
+    if(id && dispatch) {
+      fetchProduct({ id, dispatch })
+    }
+  }, [id, dispatch])
+
+  if (itemLength <= 0 && descriptionLength <= 0) {
+    return null
+  }
+
+  const { title, price, condition, pictures, sold_quantity } = item
+  const { plain_text } = description
+  const priceText = getPriceText("$", price)
+  const conditionText = `${
+    condition === "new" ? "Nuevo" : "Usado"
+  } - ${sold_quantity} vendidos`
+  const { secure_url } = pictures[0]
+
   return (
     <div className="product-container">
       <div className="product-container__image">
-        <img className="product-container__image__img" src={imageSrc} alt={name} />
+        <img
+          className="product-container__image__img"
+          src={secure_url}
+          alt={title}
+        />
       </div>
       <div className="product-container__description">
-        <p className="product-container__description__p">{`${type} - ${numOfSold} vendidos`}</p>
-        <h2 className="product-container__description__h2">{name}</h2>
-        <h1 className="product-container__description__h1">{`${currency} ${price}`}</h1>
-        <button className="product-container__description__btn">{buttonText}</button>
+        <p className="product-container__description__p">{conditionText}</p>
+        <h2 className="product-container__description__h2">{title}</h2>
+        <h1 className="product-container__description__h1">{priceText}</h1>
+        <button className="product-container__description__btn">
+          Comprar Ahora
+        </button>
       </div>
       <div className="product-container__detail">
         <h2 className="product-container__image__h2">Descripción del producto</h2>
-        <p className="product-container__image__p">{description}</p>
+        <p className="product-container__image__p">{plain_text}</p>
       </div>
     </div>
   )
-}
-
-ProductDetail.propTypes = {
-  name: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
-  currency: PropTypes.string,
-  type: PropTypes.string.isRequired,
-  numOfSold: PropTypes.number,
-  buttonText: PropTypes.string,
-}
-
-ProductDetail.defaultProps = {
-  currency: "$",
-  type: "Nuevo",
-  numOfSold: 0,
-  buttonText: "Comprar Ahora",
 }
 
 export default ProductDetail

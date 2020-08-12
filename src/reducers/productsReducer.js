@@ -8,11 +8,13 @@ import {
 } from '../actions/types';
 
 export const productsReducerInitialState = {
-  products: [],
-  paging: {},
+  author: {},
+  items: [],
+  categories: [],
   loading: false,
   error: null,
-  product: {}
+  item: {},
+  description: {}
 };
 
 export const productsReducer = (state, action) => {
@@ -26,13 +28,18 @@ export const productsReducer = (state, action) => {
     case FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
-        products: action.payload.results,
-        paging: action.payload.paging,
+        items: action.payload.items,
+        author: action.payload.author,
+        categories: action.payload.categories,
+        loading: false,
       };
     case FETCH_PRODUCT_SUCCESS:
       return {
         ...state,
-        product: action.payload.product,
+        item: action.payload.item,
+        author: action.payload.author,
+        description: action.payload.description,
+        loading: false,
       };
     default:
       return state;
