@@ -1,0 +1,14 @@
+// Mixins
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+
+@mixin body-font {
+  font-family: 'Nunito', sans-serif;
+}
+
+@mixin heading-font {
+  font-family: 'Nunito', sans-serif;
+}
+
+@mixin input-font {
+  font-family: 'Nunito', sans-serif;
+}

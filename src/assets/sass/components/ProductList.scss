@@ -1,0 +1,8 @@
+@import "../variables.scss";
+@import "../functions.scss";
+
+.products-container {
+  &__list {
+    grid-column: 2 / 4;
+  }
+}

@@ -1,0 +1,49 @@
+body {
+  @include body-font;
+  color: $gray-400;
+  margin: get_px_size(0);
+  background-color: $gray-100;
+}
+@media (min-width: 992px) {
+  body {
+    padding-top: 0;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include heading-font;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $black;
+}
+
+input {
+  @include input-font;
+  &[type="text"] {
+    background-color: $white;
+    color: $gray-400;
+    font-size: get_px_size(2);
+    outline: 0;
+  }
+}
+
+button {
+  @include input-font;
+  cursor: pointer;
+  background-image: none;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr get_px_size(7) 5fr 1fr;
+  grid-column-gap: 0.5rem;
+}

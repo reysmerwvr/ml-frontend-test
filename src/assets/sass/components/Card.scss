@@ -1,0 +1,89 @@
+@import "../variables.scss";
+@import "../functions.scss";
+
+$max-image-dimension: get_px_size(23) - 4px;
+$max-row-dimension: get_px_size(25) - 4px;
+
+.card-container {
+  display: grid;
+  grid-template-columns: $max-row-dimension 2fr 1fr;
+  grid-template-rows: minmax($max-row-dimension, $max-row-dimension);
+  grid-template-areas: "photo description location";
+  padding: 20px 0;
+  background-color: $white;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: photo;
+
+    & img {
+      max-width: $max-image-dimension;
+      max-height: $max-image-dimension;
+      border-radius: 4px;
+      // border: 1px solid $gray-100;
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  &__description {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column;
+    padding: get_px_size(0) get_px_size(1) get_px_size(0) get_px_size(1);
+    grid-area: description;
+
+    &__price {
+      display: inline;
+      font-size: get_px_size(3);
+
+      & img {
+        padding-left: get_px_size(1);
+      }
+    }
+
+    &__text {
+      font-size: get_px_size(2) + 2px;
+      color: $gray-400;
+    }
+  }
+
+  &__location {
+    display: flex;
+    justify-content: flex-start;
+    padding: get_px_size(4) get_px_size(1) get_px_size(4) get_px_size(1);
+    font-size: get_px_size(1) + 4px;
+    color: $gray-300;
+    grid-area: location;
+  }
+
+  @media screen and (max-width: $md) {
+    & {
+      grid-template-areas:
+        "photo description description"
+        "photo location location";
+    }
+  }
+
+  @media screen and (max-width: $xs) {
+    & {
+      grid-template-areas:
+        "photo photo photo"
+        "description description description"
+        "location location location";
+    }
+
+    &__description {
+      justify-content: center;
+      flex-flow: wrap;
+    }
+
+    &__location {
+      display: none;
+    }
+  }
+}

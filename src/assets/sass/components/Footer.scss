@@ -1,0 +1,7 @@
+@import "../variables.scss";
+@import "../functions.scss";
+
+.footer-container {
+  max-height: get_px_size(7);
+  height: get_px_size(7);
+}
