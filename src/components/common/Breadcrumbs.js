@@ -1,25 +1,25 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Link } from "react-router-dom"
-import "../../assets/sass/components/Breadcrumbs.scss"
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import '../../assets/sass/components/Breadcrumbs.scss';
 
 const BreadCrumbs = ({ categories, delimiter }) => {
-  const renderBreadcrumb = (categories, delimiter) => {
-    const navigationListLength = categories.length
-    return categories.map((element, index) => {
-      const { id, name = "Name", url = "/" } = element
+  const renderBreadcrumb = (categoryList, delimiterText) => {
+    const navigationListLength = categoryList.length;
+    return categoryList.map((element, index) => {
+      const { id, name = 'Name', url = '/' } = element;
       return (
-        <React.Fragment key={id}>
+        <Fragment key={id}>
           <li className="breadcrumb-container__ol__li">
             <Link to={url}>{name}</Link>
           </li>
           <li className="breadcrumb-container__ol__delimiter">
-            {index < navigationListLength - 1 ? delimiter : null}
+            {index < navigationListLength - 1 ? delimiterText : null}
           </li>
-        </React.Fragment>
-      )
-    })
-  }
+        </Fragment>
+      );
+    });
+  };
 
   return (
     <nav className="grid-container breadcrumb-container" aria-label="breadcrumb">
@@ -27,16 +27,16 @@ const BreadCrumbs = ({ categories, delimiter }) => {
         {renderBreadcrumb(categories, delimiter)}
       </ol>
     </nav>
-  )
-}
+  );
+};
 
 BreadCrumbs.propTypes = {
-  categories: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
   delimiter: PropTypes.string,
-}
+};
 
 BreadCrumbs.defaultProps = {
-  delimiter: ">",
-}
+  delimiter: '>',
+};
 
-export default BreadCrumbs
+export default BreadCrumbs;

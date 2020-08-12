@@ -1,34 +1,36 @@
-import React, { useContext, useEffect } from "react"
-import { useLocation, useHistory } from "react-router-dom"
-import Card from "./common/Card"
-import "../assets/sass/components/ProductList.scss"
-import { financial } from "../utils/helpers"
-import { fetchProducts } from "../actions"
-import { ProductsContext } from "../contexts/ProductsContext"
+import React, { useContext, useEffect } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+import Card from './common/Card';
+import '../assets/sass/components/ProductList.scss';
+import { financial } from '../utils/helpers';
+import { fetchProducts } from '../actions';
+import { ProductsContext } from '../contexts/ProductsContext';
 
 const ProductList = () => {
-  const [state, dispatch] = useContext(ProductsContext)
-  const { search } = useLocation()
-  const history = useHistory()
-  const { items } = state
+  const [state, dispatch] = useContext(ProductsContext);
+  const { search } = useLocation();
+  const history = useHistory();
+  const { items } = state;
 
   useEffect(() => {
     if (items && dispatch && items.length <= 0) {
-      const urlParams = new URLSearchParams(search)
-      let queryStringParams = {}
+      const urlParams = new URLSearchParams(search);
+      const queryStringParams = {};
       for (const [key, value] of urlParams) {
-        queryStringParams[key === "search" ? "q" : key] = value
+        queryStringParams[key === 'search' ? 'q' : key] = value;
       }
-      fetchProducts({ queryStringParams, dispatch })
+      fetchProducts({ queryStringParams, dispatch });
     }
-  }, [search, dispatch, items])
+  }, [search, dispatch, items]);
 
   const handleClick = (id) => {
-    history.push(`/items/${id}`)
-  }
+    history.push(`/items/${id}`);
+  };
 
   return items.map((product) => {
-    const { id, title, thumbnail, price, address, shipping } = product
+    const {
+      id, title, thumbnail, price, address, shipping,
+    } = product;
     return (
       <Card
         key={id}
@@ -42,8 +44,8 @@ const ProductList = () => {
         product={product}
         handleClick={handleClick}
       />
-    )
-  })
-}
+    );
+  });
+};
 
-export default ProductList
+export default ProductList;

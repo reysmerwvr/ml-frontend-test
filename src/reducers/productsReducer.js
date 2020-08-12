@@ -14,7 +14,7 @@ export const productsReducerInitialState = {
   loading: false,
   error: null,
   item: {},
-  description: {}
+  description: '',
 };
 
 export const productsReducer = (state, action) => {

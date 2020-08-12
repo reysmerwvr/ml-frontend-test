@@ -1,26 +1,26 @@
-import React, { useState, useContext } from "react"
-import { Link, useHistory } from "react-router-dom"
-import { fetchProducts } from "../../actions"
-import "../../assets/sass/components/Header.scss"
-import logo from "../../assets/images/Logo_ML.png"
-import searchIcon from "../../assets/images/ic_Search.png"
-import { ProductsContext } from "../../contexts/ProductsContext"
-import { getQueryString } from "../../utils/helpers"
+import React, { useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { fetchProducts } from '../../actions';
+import '../../assets/sass/components/Header.scss';
+import logo from '../../assets/images/Logo_ML.png';
+import searchIcon from '../../assets/images/ic_Search.png';
+import { ProductsContext } from '../../contexts/ProductsContext';
+import { getQueryString } from '../../utils/helpers';
 
 const Header = () => {
-  const [, dispatch] = useContext(ProductsContext)
-  const [search, setSearch] = useState("")
-  const history = useHistory()
+  const [, dispatch] = useContext(ProductsContext);
+  const [search, setSearch] = useState('');
+  const history = useHistory();
 
   const handleSearch = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (search) {
-      let queryStringParams = { q: search }
-      fetchProducts({ queryStringParams, dispatch })
-      queryStringParams = getQueryString(queryStringParams)
-      history.push(`/items?${queryStringParams}`)
+      let queryStringParams = { q: search };
+      fetchProducts({ queryStringParams, dispatch });
+      queryStringParams = getQueryString(queryStringParams);
+      history.push(`/items?${queryStringParams}`);
     }
-  }
+  };
 
   return (
     <header className="grid-container header-container">
@@ -40,17 +40,14 @@ const Header = () => {
             onBlur={handleSearch}
             placeholder="Buscar productos, marcas y más…"
             maxLength="100"
-            autoFocus=""
             autoCapitalize="off"
             autoCorrect="off"
             spellCheck="false"
             autoComplete="off"
-            tabIndex="2"
           />
           <button
             type="submit"
             className="header-container__search__btn"
-            tabIndex="3"
             onClick={handleSearch}
           >
             <img
@@ -62,7 +59,7 @@ const Header = () => {
         </form>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
