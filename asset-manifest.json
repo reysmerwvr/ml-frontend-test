@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ml-frontend-test/static/css/main.f845a2d8.chunk.css",
+    "main.js": "/ml-frontend-test/static/js/main.3cbdf57d.chunk.js",
+    "main.js.map": "/ml-frontend-test/static/js/main.3cbdf57d.chunk.js.map",
+    "runtime-main.js": "/ml-frontend-test/static/js/runtime-main.93b40ac5.js",
+    "runtime-main.js.map": "/ml-frontend-test/static/js/runtime-main.93b40ac5.js.map",
+    "static/js/2.fafd6eee.chunk.js": "/ml-frontend-test/static/js/2.fafd6eee.chunk.js",
+    "static/js/2.fafd6eee.chunk.js.map": "/ml-frontend-test/static/js/2.fafd6eee.chunk.js.map",
+    "index.html": "/ml-frontend-test/index.html",
+    "precache-manifest.a04d5637527c451a4cea5a42f9d84384.js": "/ml-frontend-test/precache-manifest.a04d5637527c451a4cea5a42f9d84384.js",
+    "service-worker.js": "/ml-frontend-test/service-worker.js",
+    "static/css/main.f845a2d8.chunk.css.map": "/ml-frontend-test/static/css/main.f845a2d8.chunk.css.map",
+    "static/js/2.fafd6eee.chunk.js.LICENSE.txt": "/ml-frontend-test/static/js/2.fafd6eee.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.93b40ac5.js",
+    "static/js/2.fafd6eee.chunk.js",
+    "static/css/main.f845a2d8.chunk.css",
+    "static/js/main.3cbdf57d.chunk.js"
+  ]
+}
